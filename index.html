@@ -1,7 +1,275 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#07101f"><title>神里绫华 · 月下水墨</title><style>
-*{box-sizing:border-box}html,body{margin:0;background:#07101f;color:#eef4ff;font-family:"Noto Serif SC","Songti SC","Microsoft YaHei",serif}body{overflow-x:hidden}.stage{position:relative;min-height:100svh;overflow:hidden;isolation:isolate;background:#07101f}.art{position:absolute;inset:-2%;z-index:-4;overflow:hidden;transform:scale(1.02);transition:.8s ease}.art img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:saturate(1.08) contrast(1.04) brightness(.92)}.shade{position:absolute;inset:0;z-index:-3;background:linear-gradient(90deg,rgba(5,11,24,.95) 0%,rgba(5,11,24,.8) 26%,rgba(5,11,24,.35) 48%,rgba(5,11,24,.08) 72%,rgba(5,11,24,.15) 100%),linear-gradient(180deg,rgba(6,12,25,.08),transparent 48%,rgba(6,12,25,.58))}.shell{width:min(1480px,92vw);min-height:100svh;margin:auto;display:flex;flex-direction:column;position:relative;z-index:2}header{height:86px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08)}.brand{display:flex;align-items:center;gap:14px;letter-spacing:.16em}.mark{width:30px;height:30px;border:1px solid rgba(255,255,255,.6);transform:rotate(45deg);position:relative}.mark:before,.mark:after{content:"";position:absolute;background:#dce7f7}.mark:before{width:1px;height:40px;left:14px;top:-6px}.mark:after{height:1px;width:40px;top:14px;left:-6px}.brand strong{display:block;font-size:15px;font-weight:500}.brand small{display:block;margin-top:4px;font:9px sans-serif;color:#8fa0bd;letter-spacing:.2em}nav{display:flex;gap:30px;font:13px sans-serif}nav a{color:#dce6f5;text-decoration:none;opacity:.65}.hero{flex:1;display:flex;align-items:center;padding:54px 0 90px}.copy{width:min(590px,46vw)}.kicker{font:11px sans-serif;color:#92a6c9;letter-spacing:.34em;margin-bottom:22px}h1{margin:0;font-size:clamp(56px,6vw,98px);line-height:1.05;font-weight:500;letter-spacing:.08em;text-shadow:0 10px 35px rgba(0,0,0,.2)}h1 span{display:block;margin-top:14px;font-size:.46em;color:#cbd7ee;letter-spacing:.14em}.lead{max-width:490px;margin:26px 0 28px;font:14px/1.9 sans-serif;color:#b9c6da}.actions{display:flex;gap:14px;flex-wrap:wrap}.btn{min-height:46px;padding:0 22px;border:1px solid rgba(225,235,255,.34);background:rgba(255,255,255,.05);backdrop-filter:blur(10px);color:#eef4ff;cursor:pointer;font:13px sans-serif;letter-spacing:.12em}.btn.secondary{background:transparent;color:#a9b7ce}.anchor{position:absolute;right:0;bottom:7%;text-align:right;font:11px sans-serif;color:#dbe5f5;letter-spacing:.18em}.anchor:before{content:"";display:block;width:74px;height:1px;margin:0 0 10px auto;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5))}.enter{position:absolute;inset:0;z-index:10;display:grid;place-items:center;background:rgba(4,9,20,.32);backdrop-filter:blur(8px);transition:.7s}.enter.hide{opacity:0;visibility:hidden;pointer-events:none}.enterbox{text-align:center;padding:24px}.enterbox h2{font-size:clamp(38px,5vw,62px);font-weight:500;letter-spacing:.14em;margin:0}.enterbox p{max-width:420px;color:#b8c4d8;font:13px/1.8 sans-serif;margin:16px auto 24px}.panel{min-height:70svh;padding:100px 6vw;background:linear-gradient(#07101f,#0d1930)}.panelin{width:min(1120px,100%);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}.panel h3{font-size:clamp(34px,4vw,56px);font-weight:500;margin:0 0 20px}.panel p{font:14px/2 sans-serif;color:#aebbd1;margin:0}.quote{border-left:1px solid #c5ab75;padding:28px;font-size:21px;line-height:1.8;background:linear-gradient(90deg,rgba(255,255,255,.04),transparent)}
-@media(max-width:900px){.art{inset:0}.art img{object-position:center 15%;filter:saturate(1.06) contrast(1.03) brightness(.88)}.shade{background:linear-gradient(180deg,rgba(5,11,24,.06),rgba(5,11,24,.12) 43%,rgba(5,11,24,.78) 69%,rgba(5,11,24,.97))}.shell{width:88vw}header{height:70px}nav{display:none}.brand strong{font-size:12px}.brand small{display:none}.hero{align-items:flex-end;padding:52vh 0 72px}.copy{width:100%}.kicker{font-size:9px;margin-bottom:12px}h1{font-size:clamp(44px,12vw,70px)}h1 span{font-size:.43em;margin-top:8px}.lead{font-size:13px;line-height:1.75;margin:16px 0 22px;max-width:92%}.anchor{display:none}.panel{padding:72px 7vw}.panelin{grid-template-columns:1fr;gap:34px}.quote{font-size:18px;padding:22px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}</style></head><body>
-<section class="stage" id="stage"><div class="art" id="art"><img id="heroImg" alt="神里绫华月下水墨背景"></div><div class="shade"></div><div class="enter" id="enter"><div class="enterbox"><h2>神里绫华</h2><p>月下、水墨、长衣与霜色。点击进入后切换为沉浸视图，桌面与手机分别加载对应背景。</p><button class="btn" id="enterBtn">进入月下</button></div></div><div class="shell"><header><div class="brand"><span class="mark"></span><div><strong>KAMISATO AYAKA</strong><small>INK · MOON · FROST</small></div></div><nav><a href="#top">首页</a><a href="#story">故事</a><a href="#story">意象</a><a href="#story">画廊</a></nav></header><main class="hero" id="top"><div class="copy"><div class="kicker">MOONLIGHT · INK WASH</div><h1>神里绫华<span>白鹭霜华 · 寒刃如月</span></h1><p class="lead">深靛蓝月夜压低背景，面部与银蓝长发保持最高明度。裙摆和水墨向左铺开，让人物成为整个页面最明确的视觉锚点。</p><div class="actions"><button class="btn" id="storyBtn">向下探索 →</button><button class="btn secondary" id="fullBtn">沉浸全屏</button></div></div></main><aside class="anchor">VISUAL ANCHOR<br><span style="color:#8ea0bf;font-size:10px;letter-spacing:0">月亮 · 面部 · 发冠</span></aside></div></section>
-<section class="panel" id="story"><div class="panelin"><div><div class="kicker">02 · CHARACTER MOOD</div><h3>让人物先被看见</h3><p>高亮集中在面部、发冠与月亮，深色空间负责承载文字；长发和裙摆连接左右两侧，让视线从人物自然回到页面信息。</p></div><div class="quote">「霜华不是铺满整张画面，而是把最亮的一束光留给人物。」</div></div></section>
-<script>(()=>{const img=document.getElementById('heroImg'),mobile=matchMedia('(max-width:900px)').matches,file=mobile?'assets/mobile-fallback.b64':'assets/desktop-fallback.b64';fetch(file,{cache:'no-store'}).then(r=>r.text()).then(t=>img.src='data:image/webp;base64,'+t.trim()).catch(()=>img.src=mobile?'assets/mobile.webp':'assets/desktop.webp');const enter=document.getElementById('enter');document.getElementById('enterBtn').onclick=async()=>{enter.classList.add('hide');if(innerWidth>900&&document.documentElement.requestFullscreen)try{await document.documentElement.requestFullscreen()}catch(e){}};document.getElementById('storyBtn').onclick=()=>document.getElementById('story').scrollIntoView({behavior:'smooth'});document.getElementById('fullBtn').onclick=async()=>{if(!document.fullscreenElement&&document.documentElement.requestFullscreen)try{await document.documentElement.requestFullscreen()}catch(e){}else if(document.exitFullscreen)await document.exitFullscreen()};})();</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#111d43" />
+  <title>神里绫华 · 月下水墨</title>
+  <style>
+    :root{
+      --bg:#0e1838;
+      --text:#f3f6ff;
+      --muted:#d8e1f2;
+      --line:rgba(255,255,255,.16);
+      --accent:#efe8e2;
+      --accent-text:#6f6466;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;min-height:100%;background:var(--bg);color:var(--text)}
+    body{
+      font-family:"Noto Serif SC","Songti SC","STSong","Microsoft YaHei",serif;
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+
+    .hero{
+      position:relative;
+      min-height:100vh;
+      overflow:hidden;
+      background:linear-gradient(180deg,#0c1738,#101c42 60%,#17265a);
+      isolation:isolate;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:url('./bg.webp');
+      background-size:cover;
+      background-position:center center;
+      transform:scale(1.01);
+      z-index:-3;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(11,20,49,.58) 0%, rgba(11,20,49,.50) 16%, rgba(11,20,49,.24) 35%, rgba(11,20,49,.06) 58%, rgba(11,20,49,.12) 100%),
+        linear-gradient(180deg, rgba(7,13,31,.08) 0%, rgba(7,13,31,.04) 52%, rgba(7,13,31,.18) 100%);
+      z-index:-2;
+      pointer-events:none;
+    }
+
+    .snow,.petals{position:absolute;inset:0;pointer-events:none;z-index:-1}
+    .snow::before{
+      content:"";
+      position:absolute;inset:0;
+      background-image:
+        radial-gradient(circle at 10% 18%, rgba(255,255,255,.65) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.40) 0 1px, transparent 2px),
+        radial-gradient(circle at 70% 12%, rgba(255,255,255,.55) 0 1px, transparent 2px),
+        radial-gradient(circle at 82% 28%, rgba(255,255,255,.45) 0 1px, transparent 2px),
+        radial-gradient(circle at 16% 78%, rgba(255,255,255,.28) 0 1px, transparent 2px);
+      opacity:.45;
+    }
+    .petals i{
+      position:absolute;display:block;
+      width:11px;height:7px;border-radius:90% 15% 80% 20%;
+      background:rgba(255,220,232,.72);
+      filter:blur(.2px);
+      transform:rotate(var(--r));
+      box-shadow:0 0 8px rgba(255,220,232,.18);
+    }
+    .petals i:nth-child(1){left:5%;top:31%;--r:18deg}
+    .petals i:nth-child(2){left:14%;top:70%;--r:-24deg}
+    .petals i:nth-child(3){left:46%;top:25%;--r:30deg}
+    .petals i:nth-child(4){left:72%;top:18%;--r:-14deg}
+    .petals i:nth-child(5){left:88%;top:61%;--r:36deg}
+    .petals i:nth-child(6){left:82%;top:34%;--r:12deg}
+
+    .wrap{
+      width:min(1520px,96vw);
+      margin:0 auto;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      position:relative;
+    }
+    .topbar{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:28px;
+      height:86px;
+      position:relative;
+      z-index:2;
+    }
+    .logo{display:flex;align-items:center;gap:12px;min-width:250px}
+    .logo-mark{
+      width:34px;height:34px;border-radius:50%;
+      border:1px solid rgba(255,255,255,.6);
+      display:grid;place-items:center;flex:0 0 auto;
+      box-shadow:0 0 16px rgba(255,255,255,.08)
+    }
+    .logo-mark::before{content:"✿";font-size:18px;opacity:.95}
+    .logo-text strong{display:block;font-size:19px;line-height:1;letter-spacing:.16em;font-weight:500}
+    .logo-text span{display:block;margin-top:4px;font-size:10px;letter-spacing:.3em;color:#c6d0e7;opacity:.92}
+
+    .nav{display:flex;justify-content:center;align-items:center;gap:58px;font:16px/1 "Microsoft YaHei",sans-serif}
+    .nav a{position:relative;color:#f6f8ff;opacity:.96}
+    .nav a.active::after{
+      content:"";
+      position:absolute;left:50%;transform:translateX(-50%);bottom:-18px;
+      width:24px;height:2px;border-radius:999px;
+      background:#e8f1ff;box-shadow:0 0 14px rgba(232,241,255,.55);
+    }
+    .login{
+      padding:12px 24px;border:1px solid rgba(255,255,255,.28);border-radius:12px;
+      background:rgba(255,255,255,.04);backdrop-filter:blur(12px);
+      font:15px/1 "Microsoft YaHei",sans-serif;color:#f4f7ff;
+    }
+
+    .main{
+      flex:1;display:grid;grid-template-columns:minmax(320px, 560px) 1fr;align-items:center;
+      padding:58px 0 154px;
+    }
+    .copy{padding-left:2.5vw;position:relative;z-index:2}
+    .title-cn{
+      margin:0;
+      font-size:clamp(70px,7vw,112px);
+      line-height:.98;
+      letter-spacing:.04em;
+      font-weight:600;
+      text-shadow:0 8px 30px rgba(6,10,22,.25);
+    }
+    .subtitle{
+      margin:28px 0 22px;
+      color:#e8edf8;
+      font-size:clamp(22px,2vw,34px);
+      letter-spacing:.16em;
+    }
+    .decor{display:flex;align-items:center;gap:14px;margin-bottom:18px;color:rgba(255,255,255,.58)}
+    .decor::before,.decor::after{content:"";display:block;height:1px;width:80px;background:linear-gradient(90deg, rgba(255,255,255,.28), rgba(255,255,255,.03))}
+    .decor i{font-style:normal;font-size:18px;opacity:.9}
+    .lead{
+      margin:0;color:#eef3ff;
+      font:18px/2.05 "Microsoft YaHei",sans-serif;
+      text-shadow:0 3px 12px rgba(6,10,22,.18);
+    }
+    .cta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+    .cta{
+      min-height:58px;padding:0 38px;border-radius:14px;
+      border:1px solid rgba(240,229,221,.7);
+      background:linear-gradient(180deg, rgba(255,249,245,.98), rgba(241,233,227,.94));
+      box-shadow:0 12px 30px rgba(10,18,40,.16), inset 0 0 0 1px rgba(255,255,255,.25);
+      color:var(--accent-text);font:500 18px/1 "Microsoft YaHei",sans-serif;
+      display:inline-flex;align-items:center;gap:16px;
+    }
+    .cta .flower{font-size:20px;opacity:.72}
+
+    .bottom-nav{
+      position:absolute;left:0;right:0;bottom:8px;
+      display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+      padding:0 4vw;
+    }
+    .bottom-item{
+      position:relative;display:flex;align-items:center;justify-content:center;gap:16px;
+      padding:22px 12px 28px;
+      background:linear-gradient(180deg, rgba(11,18,44,.02), rgba(11,18,44,.14));
+      backdrop-filter:blur(8px);
+    }
+    .bottom-item:not(:last-child)::after{
+      content:"";position:absolute;right:0;top:28%;bottom:28%;width:1px;background:rgba(255,255,255,.12)
+    }
+    .icon-ring{width:58px;height:58px;border-radius:50%;border:1px solid rgba(255,255,255,.56);display:grid;place-items:center;box-shadow:0 0 24px rgba(255,255,255,.05)}
+    .icon-ring::before{content:"✿";font-size:21px}
+    .item-text h4{margin:0 0 8px;font-size:17px;font-weight:500;color:#f4f7ff}
+    .item-text p{margin:0;font:14px/1.8 "Microsoft YaHei",sans-serif;color:#e0e6f6}
+    .scroll-indicator{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);font-size:34px;line-height:1;color:#f1f5ff;opacity:.96;pointer-events:none}
+
+    @media (max-width: 1100px){
+      .wrap{width:94vw}
+      .nav{gap:34px;font-size:15px}
+      .main{grid-template-columns:1fr;align-items:end;padding-top:36px;padding-bottom:220px}
+      .copy{max-width:580px;padding-left:0}
+      .bottom-nav{grid-template-columns:repeat(2,1fr);padding:0 0 14px}
+      .bottom-item:nth-child(2)::after{display:none}
+    }
+    @media (max-width: 760px){
+      .topbar{grid-template-columns:1fr auto;height:74px;gap:12px}
+      .logo{min-width:0}
+      .logo-text strong{font-size:15px}
+      .logo-text span{display:none}
+      .nav{display:none}
+      .login{padding:10px 16px;font-size:13px}
+      .main{padding:22px 0 290px}
+      .copy{padding:0 2px}
+      .title-cn{font-size:58px}
+      .subtitle{font-size:22px;letter-spacing:.1em}
+      .lead{font-size:15px;line-height:1.95}
+      .decor::before,.decor::after{width:54px}
+      .cta{min-height:52px;padding:0 24px;font-size:16px}
+      .bottom-nav{grid-template-columns:1fr;gap:6px;padding-bottom:22px}
+      .bottom-item{justify-content:flex-start;padding:14px 10px 14px 4px}
+      .bottom-item::after{display:none!important}
+      .item-text h4{font-size:15px}
+      .item-text p{font-size:12px}
+      .scroll-indicator{display:none}
+      .hero::after{
+        background:linear-gradient(180deg, rgba(11,20,49,.18) 0%, rgba(11,20,49,.18) 30%, rgba(11,20,49,.55) 58%, rgba(11,20,49,.82) 100%);
+      }
+      .hero::before{background-position:68% center}
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="snow"></div>
+    <div class="petals"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="wrap">
+      <header class="topbar">
+        <div class="logo">
+          <div class="logo-mark"></div>
+          <div class="logo-text">
+            <strong>KAMISATO AYAKA</strong>
+            <span>INK · MOON · FROST</span>
+          </div>
+        </div>
+        <nav class="nav" aria-label="主导航">
+          <a class="active" href="#">首页</a>
+          <a href="#">关于我们</a>
+          <a href="#">服务中心</a>
+          <a href="#">资讯动态</a>
+          <a href="#">联系我们</a>
+        </nav>
+        <a class="login" href="#">登录 / 注册</a>
+      </header>
+
+      <main class="main">
+        <section class="copy">
+          <h1 class="title-cn">神里绫华</h1>
+          <div class="subtitle">白鹭霜华 · 剑舞如梦</div>
+          <div class="decor"><i>✧</i></div>
+          <p class="lead">
+            天地万象，皆在一念之间<br>
+            愿此身如冰雪，护一方安宁
+          </p>
+          <div class="cta-row">
+            <a class="cta" href="#"><span>探索更多</span><span class="flower">✿</span></a>
+          </div>
+        </section>
+      </main>
+
+      <div class="bottom-nav">
+        <div class="bottom-item">
+          <div class="icon-ring"></div>
+          <div class="item-text"><h4>冰华之舞</h4><p>角色介绍</p></div>
+        </div>
+        <div class="bottom-item">
+          <div class="icon-ring"></div>
+          <div class="item-text"><h4>白鹭庭中</h4><p>故事背景</p></div>
+        </div>
+        <div class="bottom-item">
+          <div class="icon-ring"></div>
+          <div class="item-text"><h4>寒霜剑艺</h4><p>技能展示</p></div>
+        </div>
+        <div class="bottom-item">
+          <div class="icon-ring"></div>
+          <div class="item-text"><h4>花与雪</h4><p>精美图库</p></div>
+        </div>
+      </div>
+      <div class="scroll-indicator">⌄</div>
+    </div>
+  </section>
+</body>
+</html>
