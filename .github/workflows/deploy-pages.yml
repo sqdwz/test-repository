@@ -49,6 +49,7 @@ jobs:
                   if missing:
                       raise FileNotFoundError(', '.join(missing))
                   text = ''.join(p.read_text(encoding='utf-8').strip() for p in parts)
+                  text += '=' * ((4 - len(text) % 4) % 4)
                   raw = base64.b64decode(text, validate=False)
                   with Image.open(BytesIO(raw)) as im:
                       im.verify()
