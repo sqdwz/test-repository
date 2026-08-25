@@ -1,0 +1,1 @@
+Background tiles are generated from the text-free artwork for GitHub Pages.
