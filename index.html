@@ -1,275 +1,36 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#111d43" />
-  <title>神里绫华 · 月下水墨</title>
-  <style>
-    :root{
-      --bg:#0e1838;
-      --text:#f3f6ff;
-      --muted:#d8e1f2;
-      --line:rgba(255,255,255,.16);
-      --accent:#efe8e2;
-      --accent-text:#6f6466;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;min-height:100%;background:var(--bg);color:var(--text)}
-    body{
-      font-family:"Noto Serif SC","Songti SC","STSong","Microsoft YaHei",serif;
-      overflow-x:hidden;
-    }
-    a{text-decoration:none;color:inherit}
-
-    .hero{
-      position:relative;
-      min-height:100vh;
-      overflow:hidden;
-      background:linear-gradient(180deg,#0c1738,#101c42 60%,#17265a);
-      isolation:isolate;
-    }
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image:url('./bg.webp');
-      background-size:cover;
-      background-position:center center;
-      transform:scale(1.01);
-      z-index:-3;
-    }
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg, rgba(11,20,49,.58) 0%, rgba(11,20,49,.50) 16%, rgba(11,20,49,.24) 35%, rgba(11,20,49,.06) 58%, rgba(11,20,49,.12) 100%),
-        linear-gradient(180deg, rgba(7,13,31,.08) 0%, rgba(7,13,31,.04) 52%, rgba(7,13,31,.18) 100%);
-      z-index:-2;
-      pointer-events:none;
-    }
-
-    .snow,.petals{position:absolute;inset:0;pointer-events:none;z-index:-1}
-    .snow::before{
-      content:"";
-      position:absolute;inset:0;
-      background-image:
-        radial-gradient(circle at 10% 18%, rgba(255,255,255,.65) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 30% 25%, rgba(255,255,255,.40) 0 1px, transparent 2px),
-        radial-gradient(circle at 70% 12%, rgba(255,255,255,.55) 0 1px, transparent 2px),
-        radial-gradient(circle at 82% 28%, rgba(255,255,255,.45) 0 1px, transparent 2px),
-        radial-gradient(circle at 16% 78%, rgba(255,255,255,.28) 0 1px, transparent 2px);
-      opacity:.45;
-    }
-    .petals i{
-      position:absolute;display:block;
-      width:11px;height:7px;border-radius:90% 15% 80% 20%;
-      background:rgba(255,220,232,.72);
-      filter:blur(.2px);
-      transform:rotate(var(--r));
-      box-shadow:0 0 8px rgba(255,220,232,.18);
-    }
-    .petals i:nth-child(1){left:5%;top:31%;--r:18deg}
-    .petals i:nth-child(2){left:14%;top:70%;--r:-24deg}
-    .petals i:nth-child(3){left:46%;top:25%;--r:30deg}
-    .petals i:nth-child(4){left:72%;top:18%;--r:-14deg}
-    .petals i:nth-child(5){left:88%;top:61%;--r:36deg}
-    .petals i:nth-child(6){left:82%;top:34%;--r:12deg}
-
-    .wrap{
-      width:min(1520px,96vw);
-      margin:0 auto;
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      position:relative;
-    }
-    .topbar{
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:28px;
-      height:86px;
-      position:relative;
-      z-index:2;
-    }
-    .logo{display:flex;align-items:center;gap:12px;min-width:250px}
-    .logo-mark{
-      width:34px;height:34px;border-radius:50%;
-      border:1px solid rgba(255,255,255,.6);
-      display:grid;place-items:center;flex:0 0 auto;
-      box-shadow:0 0 16px rgba(255,255,255,.08)
-    }
-    .logo-mark::before{content:"✿";font-size:18px;opacity:.95}
-    .logo-text strong{display:block;font-size:19px;line-height:1;letter-spacing:.16em;font-weight:500}
-    .logo-text span{display:block;margin-top:4px;font-size:10px;letter-spacing:.3em;color:#c6d0e7;opacity:.92}
-
-    .nav{display:flex;justify-content:center;align-items:center;gap:58px;font:16px/1 "Microsoft YaHei",sans-serif}
-    .nav a{position:relative;color:#f6f8ff;opacity:.96}
-    .nav a.active::after{
-      content:"";
-      position:absolute;left:50%;transform:translateX(-50%);bottom:-18px;
-      width:24px;height:2px;border-radius:999px;
-      background:#e8f1ff;box-shadow:0 0 14px rgba(232,241,255,.55);
-    }
-    .login{
-      padding:12px 24px;border:1px solid rgba(255,255,255,.28);border-radius:12px;
-      background:rgba(255,255,255,.04);backdrop-filter:blur(12px);
-      font:15px/1 "Microsoft YaHei",sans-serif;color:#f4f7ff;
-    }
-
-    .main{
-      flex:1;display:grid;grid-template-columns:minmax(320px, 560px) 1fr;align-items:center;
-      padding:58px 0 154px;
-    }
-    .copy{padding-left:2.5vw;position:relative;z-index:2}
-    .title-cn{
-      margin:0;
-      font-size:clamp(70px,7vw,112px);
-      line-height:.98;
-      letter-spacing:.04em;
-      font-weight:600;
-      text-shadow:0 8px 30px rgba(6,10,22,.25);
-    }
-    .subtitle{
-      margin:28px 0 22px;
-      color:#e8edf8;
-      font-size:clamp(22px,2vw,34px);
-      letter-spacing:.16em;
-    }
-    .decor{display:flex;align-items:center;gap:14px;margin-bottom:18px;color:rgba(255,255,255,.58)}
-    .decor::before,.decor::after{content:"";display:block;height:1px;width:80px;background:linear-gradient(90deg, rgba(255,255,255,.28), rgba(255,255,255,.03))}
-    .decor i{font-style:normal;font-size:18px;opacity:.9}
-    .lead{
-      margin:0;color:#eef3ff;
-      font:18px/2.05 "Microsoft YaHei",sans-serif;
-      text-shadow:0 3px 12px rgba(6,10,22,.18);
-    }
-    .cta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
-    .cta{
-      min-height:58px;padding:0 38px;border-radius:14px;
-      border:1px solid rgba(240,229,221,.7);
-      background:linear-gradient(180deg, rgba(255,249,245,.98), rgba(241,233,227,.94));
-      box-shadow:0 12px 30px rgba(10,18,40,.16), inset 0 0 0 1px rgba(255,255,255,.25);
-      color:var(--accent-text);font:500 18px/1 "Microsoft YaHei",sans-serif;
-      display:inline-flex;align-items:center;gap:16px;
-    }
-    .cta .flower{font-size:20px;opacity:.72}
-
-    .bottom-nav{
-      position:absolute;left:0;right:0;bottom:8px;
-      display:grid;grid-template-columns:repeat(4,1fr);gap:0;
-      padding:0 4vw;
-    }
-    .bottom-item{
-      position:relative;display:flex;align-items:center;justify-content:center;gap:16px;
-      padding:22px 12px 28px;
-      background:linear-gradient(180deg, rgba(11,18,44,.02), rgba(11,18,44,.14));
-      backdrop-filter:blur(8px);
-    }
-    .bottom-item:not(:last-child)::after{
-      content:"";position:absolute;right:0;top:28%;bottom:28%;width:1px;background:rgba(255,255,255,.12)
-    }
-    .icon-ring{width:58px;height:58px;border-radius:50%;border:1px solid rgba(255,255,255,.56);display:grid;place-items:center;box-shadow:0 0 24px rgba(255,255,255,.05)}
-    .icon-ring::before{content:"✿";font-size:21px}
-    .item-text h4{margin:0 0 8px;font-size:17px;font-weight:500;color:#f4f7ff}
-    .item-text p{margin:0;font:14px/1.8 "Microsoft YaHei",sans-serif;color:#e0e6f6}
-    .scroll-indicator{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);font-size:34px;line-height:1;color:#f1f5ff;opacity:.96;pointer-events:none}
-
-    @media (max-width: 1100px){
-      .wrap{width:94vw}
-      .nav{gap:34px;font-size:15px}
-      .main{grid-template-columns:1fr;align-items:end;padding-top:36px;padding-bottom:220px}
-      .copy{max-width:580px;padding-left:0}
-      .bottom-nav{grid-template-columns:repeat(2,1fr);padding:0 0 14px}
-      .bottom-item:nth-child(2)::after{display:none}
-    }
-    @media (max-width: 760px){
-      .topbar{grid-template-columns:1fr auto;height:74px;gap:12px}
-      .logo{min-width:0}
-      .logo-text strong{font-size:15px}
-      .logo-text span{display:none}
-      .nav{display:none}
-      .login{padding:10px 16px;font-size:13px}
-      .main{padding:22px 0 290px}
-      .copy{padding:0 2px}
-      .title-cn{font-size:58px}
-      .subtitle{font-size:22px;letter-spacing:.1em}
-      .lead{font-size:15px;line-height:1.95}
-      .decor::before,.decor::after{width:54px}
-      .cta{min-height:52px;padding:0 24px;font-size:16px}
-      .bottom-nav{grid-template-columns:1fr;gap:6px;padding-bottom:22px}
-      .bottom-item{justify-content:flex-start;padding:14px 10px 14px 4px}
-      .bottom-item::after{display:none!important}
-      .item-text h4{font-size:15px}
-      .item-text p{font-size:12px}
-      .scroll-indicator{display:none}
-      .hero::after{
-        background:linear-gradient(180deg, rgba(11,20,49,.18) 0%, rgba(11,20,49,.18) 30%, rgba(11,20,49,.55) 58%, rgba(11,20,49,.82) 100%);
-      }
-      .hero::before{background-position:68% center}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a1430">
+<title>神里绫华 · 月下水墨</title>
+<style>
+:root{--bg:#09132d;--bg2:#132554;--text:#f5f7ff;--muted:#b7c4dd;--line:rgba(255,255,255,.14);--hero:none;--warm:#f4ece7;--warmText:#66595d}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Serif SC","Songti SC","STSong","Microsoft YaHei",serif;overflow-x:hidden}a{text-decoration:none;color:inherit}button,input{font:inherit}.hero{min-height:100svh;position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(135deg,#081127,#173267)}.hero-bg{position:absolute;inset:-2%;z-index:-3;background-image:var(--hero);background-size:cover;background-position:center;transform:scale(1.02);transition:.5s}.hero:after{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(6,14,35,.60),rgba(6,14,35,.45) 20%,rgba(6,14,35,.18) 40%,rgba(6,14,35,.04) 64%,rgba(6,14,35,.12)),linear-gradient(180deg,transparent 55%,rgba(5,11,28,.28));pointer-events:none}.shell{width:min(1500px,94vw);min-height:100svh;margin:auto;display:flex;flex-direction:column;position:relative}.top{height:84px;display:grid;grid-template-columns:260px 1fr 190px;align-items:center;gap:22px;z-index:10}.brand{display:flex;align-items:center;gap:12px}.crest{width:38px;height:38px;border:1px solid rgba(255,255,255,.55);border-radius:50%;display:grid;place-items:center}.crest:before{content:"✿";font-size:20px}.brand strong{display:block;font-size:18px;letter-spacing:.15em;font-weight:500}.brand small{display:block;margin-top:4px;font:10px/1 "Microsoft YaHei",sans-serif;letter-spacing:.28em;color:#c4d0e7}.nav{display:flex;justify-content:center;gap:48px;font:15px/1 "Microsoft YaHei",sans-serif}.nav a{padding:34px 0;position:relative;opacity:.9}.nav a:after{content:"";position:absolute;left:50%;bottom:17px;width:0;height:2px;background:#fff;transform:translateX(-50%);transition:.2s}.nav a:hover:after,.nav a.active:after{width:26px}.top-actions{display:flex;justify-content:flex-end;gap:10px}.top-btn{height:42px;padding:0 16px;border:1px solid rgba(255,255,255,.24);border-radius:10px;background:rgba(255,255,255,.04);color:white;cursor:pointer;backdrop-filter:blur(10px)}.menu{display:none;width:42px;padding:0}.hero-main{flex:1;display:grid;grid-template-columns:minmax(380px,560px) 1fr;align-items:center;padding:50px 0 150px}.copy{padding-left:2vw}.eyebrow{font:11px/1 "Microsoft YaHei",sans-serif;letter-spacing:.34em;color:#9fb4dc;margin-bottom:20px}.hero h1{margin:0;font-size:clamp(68px,7vw,112px);line-height:.98;letter-spacing:.05em;font-weight:600;text-shadow:0 12px 35px rgba(0,0,0,.22)}.sub{margin:26px 0 18px;font-size:clamp(23px,2vw,34px);letter-spacing:.14em}.lead{margin:0;font:16px/2 "Microsoft YaHei",sans-serif;color:#e7edf9}.cta-row{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}.primary,.secondary{min-height:54px;border-radius:12px;cursor:pointer}.primary{padding:0 32px;border:1px solid #efe6e0;background:linear-gradient(#fffaf7,#eee4de);color:var(--warmText);font:500 17px/1 "Microsoft YaHei",sans-serif}.secondary{padding:0 20px;border:1px solid rgba(255,255,255,.2);background:rgba(6,14,35,.28);color:#fff}.features{position:absolute;left:3vw;right:3vw;bottom:18px;display:grid;grid-template-columns:repeat(4,1fr)}.feature{border:0;color:#fff;background:linear-gradient(180deg,rgba(8,18,44,.02),rgba(8,18,44,.20));backdrop-filter:blur(8px);min-height:92px;display:flex;justify-content:center;align-items:center;gap:14px;cursor:pointer;position:relative}.feature:not(:last-child):after{content:"";position:absolute;right:0;top:28%;bottom:28%;width:1px;background:var(--line)}.round{width:50px;height:50px;border-radius:50%;border:1px solid rgba(255,255,255,.5);display:grid;place-items:center}.round:before{content:"✿"}.feature b{display:block;font-size:16px;font-weight:500;margin-bottom:6px}.feature span span{font:12px/1 "Microsoft YaHei",sans-serif;color:#d3dcef}.status{position:absolute;right:20px;bottom:118px;font:10px/1 "Microsoft YaHei",sans-serif;letter-spacing:.16em;color:#d9e2f2;opacity:.7}.section{padding:100px 6vw;background:#0b1634;position:relative;overflow:hidden}.section.alt{background:#101f46}.inner{width:min(1240px,100%);margin:auto;position:relative}.head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:44px}.kicker{font:11px/1 "Microsoft YaHei",sans-serif;letter-spacing:.28em;color:#90a7d2;margin-bottom:12px}.section h2{margin:0;font-size:clamp(38px,4vw,60px);font-weight:500;letter-spacing:.06em}.note{max-width:430px;color:#aebbd2;font:14px/1.9 "Microsoft YaHei",sans-serif}.glass{background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.1);border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,.2);backdrop-filter:blur(14px)}.character{display:grid;grid-template-columns:360px 1fr;gap:24px}.portrait{min-height:500px;background-image:var(--hero);background-size:cover;background-position:68% center;position:relative;overflow:hidden}.portrait:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(6,13,31,.78))}.portrait .meta{position:absolute;left:22px;bottom:22px;z-index:2}.meta b{font-size:22px}.meta p{font:13px/1.7 "Microsoft YaHei",sans-serif;color:#d5deef}.tabs{padding:26px}.tabbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}.tab{padding:10px 16px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:transparent;color:#cbd6e9;cursor:pointer}.tab.active,.tab:hover{background:rgba(255,255,255,.09);color:#fff}.panel{display:none}.panel.active{display:block}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.stat{padding:18px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07)}.stat small{display:block;color:#91a6cd;margin-bottom:8px}.stat b{font:16px/1.6 "Microsoft YaHei",sans-serif}.copytext{font:15px/2 "Microsoft YaHei",sans-serif;color:#d7e0ef;margin:0}.story{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}.accordion{display:flex;flex-direction:column;gap:10px}.acc{border:1px solid rgba(255,255,255,.09);border-radius:15px;background:rgba(255,255,255,.035);overflow:hidden}.acc>button{width:100%;padding:18px 20px;border:0;background:transparent;color:white;display:flex;justify-content:space-between;cursor:pointer}.acc-body{max-height:0;overflow:hidden;transition:.3s}.acc-body p{padding:0 20px 18px;margin:0;color:#bdc9dd;font:14px/1.9 "Microsoft YaHei",sans-serif}.acc.open .acc-body{max-height:180px}.quote{min-height:360px;padding:34px;display:flex;flex-direction:column;justify-content:flex-end;background-image:linear-gradient(180deg,rgba(7,14,32,.05),rgba(7,14,32,.78)),var(--hero);background-size:cover;background-position:18% center}.quote blockquote{margin:0;font-size:25px;line-height:1.8}.skills{display:grid;grid-template-columns:300px 1fr;gap:24px}.skill-list{display:flex;flex-direction:column;gap:10px}.skill{padding:17px 18px;text-align:left;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:rgba(255,255,255,.035);color:white;cursor:pointer}.skill.active,.skill:hover{background:rgba(255,255,255,.09);transform:translateX(3px)}.skill b{display:block;margin-bottom:6px}.skill small{color:#aebbd2}.skill-detail{padding:32px;min-height:330px}.skill-detail h3{margin:0 0 14px;font-size:32px;font-weight:500}.skill-detail p{font:15px/1.95 "Microsoft YaHei",sans-serif;color:#c8d3e6}.meters{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}.meter{padding:14px;border:1px solid rgba(255,255,255,.07);border-radius:12px;background:rgba(255,255,255,.03)}.meter small{display:block;color:#91a7d0;margin-bottom:7px}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.shot{aspect-ratio:16/10;border:1px solid rgba(255,255,255,.08);border-radius:16px;background-image:var(--hero);background-size:cover;cursor:pointer;transition:.25s;position:relative}.shot:hover{transform:translateY(-4px)}.shot:after{content:attr(data-label);position:absolute;left:12px;bottom:11px;padding:7px 10px;border-radius:999px;background:rgba(5,12,28,.54);font:11px/1 "Microsoft YaHei",sans-serif}.shot:nth-child(1){background-position:50% 50%}.shot:nth-child(2){background-position:70% 28%}.shot:nth-child(3){background-position:24% 72%}.shot:nth-child(4){background-position:82% 76%}.shot:nth-child(5){background-position:62% 16%}.shot:nth-child(6){background-position:94% 56%}.footer{padding:46px 6vw;background:#071028;border-top:1px solid rgba(255,255,255,.07)}.foot{width:min(1240px,100%);margin:auto;display:flex;justify-content:space-between;align-items:center}.foot p{font:12px/1.7 "Microsoft YaHei",sans-serif;color:#8293b3}.modal{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:20px;background:rgba(3,7,18,.78);backdrop-filter:blur(14px)}.modal.show{display:grid}.modal-card{width:min(850px,95vw);max-height:90vh;overflow:auto;background:#101d42;border:1px solid rgba(255,255,255,.12);border-radius:20px;position:relative;box-shadow:0 30px 100px rgba(0,0,0,.45)}.close{position:absolute;right:12px;top:12px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(5,12,29,.5);color:#fff;cursor:pointer;z-index:2}.preview{height:min(68vh,620px);background-image:var(--hero);background-size:cover;background-position:center}.login-card{width:min(440px,94vw);padding:34px}.login-card h3{font-size:28px;margin:0 0 8px}.login-card p{font:13px/1.8 "Microsoft YaHei",sans-serif;color:#9fb0cf}.field{display:block;margin:14px 0}.field span{display:block;margin-bottom:7px;color:#9fb0cf;font:12px/1 "Microsoft YaHei",sans-serif}.field input{width:100%;height:44px;border-radius:10px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:#fff;padding:0 13px}.toast{position:fixed;left:50%;bottom:26px;z-index:120;transform:translate(-50%,18px);opacity:0;padding:11px 15px;border-radius:999px;background:rgba(6,14,33,.9);border:1px solid rgba(255,255,255,.12);font:12px/1 "Microsoft YaHei",sans-serif;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}.drawer{display:none}
+@media(max-width:980px){.top{grid-template-columns:240px 1fr auto}.nav{gap:26px}.hero-main{grid-template-columns:1fr;align-items:end;padding-top:220px}.copy{max-width:600px}.character,.story,.skills{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.shell{width:90vw}.top{height:72px;grid-template-columns:1fr auto}.nav,.top-actions .loginTop{display:none}.brand strong{font-size:14px}.brand small{display:none}.menu{display:block}.hero-main{padding:42vh 0 310px}.copy{padding:0}.eyebrow{font-size:9px}.hero h1{font-size:56px}.sub{font-size:22px}.lead{font-size:14px}.features{left:0;right:0;grid-template-columns:1fr 1fr}.feature{min-height:75px;justify-content:flex-start;padding:10px}.round{width:42px;height:42px}.feature b{font-size:14px}.feature span span{font-size:10px}.status{bottom:174px}.section{padding:78px 5vw}.head{display:block}.note{margin-top:16px}.stats{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.meters{grid-template-columns:1fr}.foot{display:block}.drawer{display:block;position:fixed;left:0;right:0;top:72px;z-index:90;background:rgba(6,14,33,.96);backdrop-filter:blur(18px);transform:translateY(-120%);transition:.25s}.drawer.show{transform:translateY(0)}.drawer a{display:block;padding:17px 7vw;border-bottom:1px solid rgba(255,255,255,.07);font:14px/1 "Microsoft YaHei",sans-serif}}
+</style>
 </head>
 <body>
-  <section class="hero">
-    <div class="snow"></div>
-    <div class="petals"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="wrap">
-      <header class="topbar">
-        <div class="logo">
-          <div class="logo-mark"></div>
-          <div class="logo-text">
-            <strong>KAMISATO AYAKA</strong>
-            <span>INK · MOON · FROST</span>
-          </div>
-        </div>
-        <nav class="nav" aria-label="主导航">
-          <a class="active" href="#">首页</a>
-          <a href="#">关于我们</a>
-          <a href="#">服务中心</a>
-          <a href="#">资讯动态</a>
-          <a href="#">联系我们</a>
-        </nav>
-        <a class="login" href="#">登录 / 注册</a>
-      </header>
-
-      <main class="main">
-        <section class="copy">
-          <h1 class="title-cn">神里绫华</h1>
-          <div class="subtitle">白鹭霜华 · 剑舞如梦</div>
-          <div class="decor"><i>✧</i></div>
-          <p class="lead">
-            天地万象，皆在一念之间<br>
-            愿此身如冰雪，护一方安宁
-          </p>
-          <div class="cta-row">
-            <a class="cta" href="#"><span>探索更多</span><span class="flower">✿</span></a>
-          </div>
-        </section>
-      </main>
-
-      <div class="bottom-nav">
-        <div class="bottom-item">
-          <div class="icon-ring"></div>
-          <div class="item-text"><h4>冰华之舞</h4><p>角色介绍</p></div>
-        </div>
-        <div class="bottom-item">
-          <div class="icon-ring"></div>
-          <div class="item-text"><h4>白鹭庭中</h4><p>故事背景</p></div>
-        </div>
-        <div class="bottom-item">
-          <div class="icon-ring"></div>
-          <div class="item-text"><h4>寒霜剑艺</h4><p>技能展示</p></div>
-        </div>
-        <div class="bottom-item">
-          <div class="icon-ring"></div>
-          <div class="item-text"><h4>花与雪</h4><p>精美图库</p></div>
-        </div>
-      </div>
-      <div class="scroll-indicator">⌄</div>
-    </div>
-  </section>
+<section class="hero" id="home"><div class="hero-bg" id="heroBg"></div><div class="shell"><header class="top"><a class="brand" href="#home"><span class="crest"></span><span><strong>KAMISATO AYAKA</strong><small>INK · MOON · FROST</small></span></a><nav class="nav"><a class="active" href="#home">首页</a><a href="#character">角色</a><a href="#story">故事</a><a href="#skills">剑艺</a><a href="#gallery">画廊</a></nav><div class="top-actions"><button class="top-btn" id="fullBtn">⛶</button><button class="top-btn loginTop" id="loginBtn">登录 / 注册</button><button class="top-btn menu" id="menuBtn">☰</button></div></header><main class="hero-main"><div class="copy"><div class="eyebrow">MOONLIGHT · INK WASH</div><h1>神里绫华</h1><div class="sub">白鹭霜华 · 剑舞如梦</div><p class="lead">天地万象，皆在一念之间。<br>愿此身如冰雪，护一方安宁。</p><div class="cta-row"><button class="primary" data-scroll="#character">探索更多　✿</button><button class="secondary" id="introBtn">查看设计说明</button></div></div></main><div class="features"><button class="feature" data-scroll="#character"><i class="round"></i><span><b>冰华之舞</b><span>角色介绍</span></span></button><button class="feature" data-scroll="#story"><i class="round"></i><span><b>白鹭庭中</b><span>故事背景</span></span></button><button class="feature" data-scroll="#skills"><i class="round"></i><span><b>寒霜剑艺</b><span>技能展示</span></span></button><button class="feature" data-scroll="#gallery"><i class="round"></i><span><b>花与雪</b><span>精美图库</span></span></button></div><div class="status" id="bgStatus">BACKGROUND · LOADING</div></div></section>
+<div class="drawer" id="drawer"><a href="#home">首页</a><a href="#character">角色</a><a href="#story">故事</a><a href="#skills">剑艺</a><a href="#gallery">画廊</a></div>
+<section class="section" id="character"><div class="inner"><div class="head"><div><div class="kicker">01 · CHARACTER</div><h2>冰华之舞</h2></div><div class="note">银蓝长发、深靛长裙和月亮构成人物视觉锚点。信息面板可切换，验证角色站基础交互。</div></div><div class="character"><div class="portrait glass"><div class="meta"><b>神里绫华</b><p>白鹭公主 · 月下水墨视觉实验</p></div></div><div class="tabs glass"><div class="tabbar"><button class="tab active" data-tab="p1">角色档案</button><button class="tab" data-tab="p2">视觉语言</button><button class="tab" data-tab="p3">意象元素</button></div><div class="panel active" id="p1"><div class="stats"><div class="stat"><small>视觉主色</small><b>深靛蓝 / 冰蓝 / 银白</b></div><div class="stat"><small>核心锚点</small><b>面部 / 发冠 / 月亮</b></div><div class="stat"><small>构图方向</small><b>人物居右，裙摆向左</b></div><div class="stat"><small>页面气质</small><b>水墨 / 月夜 / 通透</b></div></div></div><div class="panel" id="p2"><p class="copytext">人物不作为普通背景铺满，而是把最高明度留给面部和月亮。左侧压暗并降低细节，为标题和操作区腾出空间；发丝与裙摆负责把视线带回信息区。</p></div><div class="panel" id="p3"><p class="copytext">月、雪、樱花、水面倒影和亭台共同构成环境语义。它们通过前后景和明度差强化空间，而不是与人物争夺注意力。</p></div></div></div></div></section>
+<section class="section alt" id="story"><div class="inner"><div class="head"><div><div class="kicker">02 · STORY</div><h2>白鹭庭中</h2></div><div class="note">点击展开不同段落，测试手风琴交互和信息层级。</div></div><div class="story"><div class="accordion"><div class="acc open"><button><span>月下庭前</span><span>＋</span></button><div class="acc-body"><p>夜色先压低背景，再由月光、银发和水面逐级抬高亮度，让人物成为第一视觉落点。</p></div></div><div class="acc"><button><span>白鹭与霜华</span><span>＋</span></button><div class="acc-body"><p>白鹭强调克制与清澈，霜华提供冷感和锐度；交互保持轻量，避免抢戏。</p></div></div><div class="acc"><button><span>花与雪</span><span>＋</span></button><div class="acc-body"><p>樱花提供少量暖色，雪点增加空间颗粒感，两者都避开人物面部关键区域。</p></div></div><div class="acc"><button><span>远景空间</span><span>＋</span></button><div class="acc-body"><p>亭台、山水和倒影构成纵深，网页再叠加轻微视差，形成更完整的空间体验。</p></div></div></div><div class="quote glass"><blockquote>「最亮的一束光，应该留给人物。」</blockquote></div></div></div></section>
+<section class="section" id="skills"><div class="inner"><div class="head"><div><div class="kicker">03 · SKILLS</div><h2>寒霜剑艺</h2></div><div class="note">选择左侧项目，右侧内容实时切换。</div></div><div class="skills"><div class="skill-list"><button class="skill active" data-skill="normal"><b>神里流 · 倾</b><small>基础剑式</small></button><button class="skill" data-skill="frost"><b>神里流 · 冰华</b><small>寒气迸发</small></button><button class="skill" data-skill="dash"><b>神里流 · 霰步</b><small>高速位移</small></button><button class="skill" data-skill="burst"><b>神里流 · 霜灭</b><small>持续剑风</small></button></div><div class="skill-detail glass" id="skillDetail"></div></div></div></section>
+<section class="section alt" id="gallery"><div class="inner"><div class="head"><div><div class="kicker">04 · GALLERY</div><h2>花与雪</h2></div><div class="note">点击不同裁切进入沉浸式预览。</div></div><div class="gallery"><div class="shot" data-label="月下正景" data-pos="50% 50%"></div><div class="shot" data-label="人物近景" data-pos="70% 28%"></div><div class="shot" data-label="裙摆流线" data-pos="24% 72%"></div><div class="shot" data-label="水面倒影" data-pos="82% 76%"></div><div class="shot" data-label="月与发冠" data-pos="62% 16%"></div><div class="shot" data-label="远景亭台" data-pos="94% 56%"></div></div></div></section>
+<footer class="footer"><div class="foot"><a class="brand" href="#home"><span class="crest"></span><span><strong>KAMISATO AYAKA</strong><small>TEST WEBSITE · GITHUB PAGES</small></span></a><p>响应式 · 模态窗 · 标签切换 · 手风琴 · 全屏 · 视差 · GitHub Pages</p></div></footer>
+<div class="modal" id="galleryModal"><div class="modal-card"><button class="close" data-close="galleryModal">✕</button><div class="preview" id="preview"></div></div></div><div class="modal" id="loginModal"><div class="modal-card login-card"><button class="close" data-close="loginModal">✕</button><h3>登录 / 注册</h3><p>测试交互，不会提交真实账号。</p><label class="field"><span>账号</span><input id="demoUser" placeholder="输入任意测试账号"></label><label class="field"><span>密码</span><input type="password" placeholder="测试密码"></label><button class="primary" id="demoLogin">进入测试</button></div></div><div class="modal" id="introModal"><div class="modal-card login-card"><button class="close" data-close="introModal">✕</button><h3>设计说明</h3><p>这版重点解决之前背景模糊的问题，并把人物、月亮和发冠作为右侧视觉锚点。桌面端保留大幅横景，手机端自动裁切到人物上半身。</p><button class="primary" data-close="introModal">知道了</button></div></div><div class="toast" id="toast">完成</div>
+<script>
+const root=document.documentElement,statusEl=document.getElementById('bgStatus');
+const fetchTxt=p=>fetch(p,{cache:'force-cache'}).then(r=>{if(!r.ok)throw Error(p);return r.text()});
+async function setBg(){const base=[0,1,2,3,4,5,6,7,8,9,10].map(i=>`./_final/bg.part${String(i).padStart(2,'0')}`);const alt=[0,1,2,3,4,5].map(i=>`./_final/bg.part${String(i).padStart(2,'0')}`).concat('./_final/bg.part06all',[7,8,9,10].map(i=>`./_final/bg.part${String(i).padStart(2,'0')}`));for(const paths of [base,base.slice(0,10),alt]){try{const s='data:image/webp;base64,'+(await Promise.all(paths.map(fetchTxt))).join('').trim();const ok=await new Promise(res=>{const im=new Image();im.onload=()=>res(true);im.onerror=()=>res(false);im.src=s});if(ok){root.style.setProperty('--hero',`url("${s}")`);statusEl.textContent='BACKGROUND · READY';setTimeout(()=>statusEl.style.opacity=0,900);return}}catch(e){console.warn(e)}}statusEl.textContent='BACKGROUND · FALLBACK'}setBg();
+const drawer=document.getElementById('drawer');document.getElementById('menuBtn').onclick=()=>drawer.classList.toggle('show');document.querySelectorAll('[data-scroll],.nav a,.drawer a').forEach(x=>x.onclick=e=>{const t=x.dataset.scroll||x.getAttribute('href');if(t&&t[0]=='#'){e.preventDefault();document.querySelector(t)?.scrollIntoView({behavior:'smooth'});drawer.classList.remove('show')}});
+const nav=[...document.querySelectorAll('.nav a')];['home','character','story','skills','gallery'].forEach(id=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)nav.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+id))}),{rootMargin:'-42% 0px -50%'}).observe(document.getElementById(id)));
+const hero=document.getElementById('home'),heroBg=document.getElementById('heroBg');if(matchMedia('(pointer:fine)').matches){hero.onpointermove=e=>{const x=(e.clientX/innerWidth-.5)*8,y=(e.clientY/innerHeight-.5)*5;heroBg.style.transform=`scale(1.035) translate(${-x}px,${-y}px)`};hero.onpointerleave=()=>heroBg.style.transform='scale(1.02)'}
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active')});document.querySelectorAll('.acc>button').forEach(b=>b.onclick=()=>b.parentElement.classList.toggle('open'));
+const skillData={normal:['神里流 · 倾','基础剑式讲究连续、清晰与节奏。网页对应的是点击反馈、状态变化和层级切换都要明确，但不喧宾夺主。',['连续性','响应','轻量']],frost:['神里流 · 冰华','局部瞬间抬高视觉强度，再回到克制。页面只给关键按钮和当前状态更高亮度。',['强调','层级','控制']],dash:['神里流 · 霰步','高速位移制造空间感。网页用滚动定位、轻微视差和响应式裁切模拟位移。',['位移','视差','响应式']],burst:['神里流 · 霜灭','持续输出但保持秩序。圆角、细线、玻璃层和冷色系贯穿全部模块。',['一致性','反馈','统一语言']]};function renderSkill(k){const s=skillData[k];document.getElementById('skillDetail').innerHTML=`<div class="kicker">INTERACTION · ${k.toUpperCase()}</div><h3>${s[0]}</h3><p>${s[1]}</p><div class="meters">${s[2].map((x,i)=>`<div class="meter"><small>0${i+1}</small><b>${x}</b></div>`).join('')}</div>`}renderSkill('normal');document.querySelectorAll('.skill').forEach(b=>b.onclick=()=>{document.querySelectorAll('.skill').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderSkill(b.dataset.skill)});
+const gm=document.getElementById('galleryModal'),pv=document.getElementById('preview'),lm=document.getElementById('loginModal'),im=document.getElementById('introModal');function openM(m){m.classList.add('show');document.body.style.overflow='hidden'}function closeM(m){m.classList.remove('show');if(!document.querySelector('.modal.show'))document.body.style.overflow=''}document.querySelectorAll('.shot').forEach(s=>s.onclick=()=>{pv.style.backgroundPosition=s.dataset.pos;openM(gm)});document.getElementById('loginBtn').onclick=()=>openM(lm);document.getElementById('introBtn').onclick=()=>openM(im);document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>closeM(document.getElementById(b.dataset.close)));document.querySelectorAll('.modal').forEach(m=>m.onclick=e=>{if(e.target===m)closeM(m)});document.onkeydown=e=>{if(e.key==='Escape')document.querySelectorAll('.modal.show').forEach(closeM)};
+document.getElementById('fullBtn').onclick=async()=>{try{document.fullscreenElement?await document.exitFullscreen():await document.documentElement.requestFullscreen()}catch(e){toast('当前浏览器不允许全屏')}};let tt;function toast(t){const x=document.getElementById('toast');x.textContent=t;x.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>x.classList.remove('show'),1800)}document.getElementById('demoLogin').onclick=()=>{const n=document.getElementById('demoUser').value.trim()||'访客';closeM(lm);toast(n+'：测试登录成功')};
+</script>
 </body>
 </html>
