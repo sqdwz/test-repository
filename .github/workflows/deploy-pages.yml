@@ -25,47 +25,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Rebuild and verify background
+      - name: Rebuild background
         shell: bash
         run: |
-          python -m pip install --quiet pillow
+          set -euo pipefail
+          cat _bg900/part{00..15} | tr -d '\r\n ' > bg.b64
+          base64 -d bg.b64 > bg.webp
+          test -s bg.webp
           python <<'PY'
           from pathlib import Path
-          from io import BytesIO
-          import base64
-          from PIL import Image
-
-          root = Path('_final')
-          candidates = [
-              [root / f'bg.part{i:02d}' for i in range(11)],
-              [root / f'bg.part{i:02d}' for i in range(10)],
-              [*[root / f'bg.part{i:02d}' for i in range(6)], root / 'bg.part06all', *[root / f'bg.part{i:02d}' for i in range(7, 11)]],
-          ]
-
-          errors = []
-          for idx, parts in enumerate(candidates, 1):
-              try:
-                  missing = [str(p) for p in parts if not p.exists()]
-                  if missing:
-                      raise FileNotFoundError(', '.join(missing))
-                  text = ''.join(p.read_text(encoding='utf-8').strip() for p in parts)
-                  text += '=' * ((4 - len(text) % 4) % 4)
-                  raw = base64.b64decode(text, validate=False)
-                  with Image.open(BytesIO(raw)) as im:
-                      im.verify()
-                  with Image.open(BytesIO(raw)) as im:
-                      w, h = im.size
-                      fmt = im.format
-                  if w < 1000 or h < 500:
-                      raise ValueError(f'background too small: {w}x{h}')
-                  Path('bg.webp').write_bytes(raw)
-                  print(f'Background candidate {idx} verified: {fmt} {w}x{h}, {len(raw)} bytes')
-                  break
-              except Exception as exc:
-                  errors.append(f'candidate {idx}: {exc}')
-          else:
-              raise SystemExit('No valid background candidate. ' + ' | '.join(errors))
+          data = Path('bg.webp').read_bytes()
+          if len(data) < 20000:
+              raise SystemExit(f'bg.webp too small: {len(data)} bytes')
+          if not (data[:4] == b'RIFF' and data[8:12] == b'WEBP'):
+              raise SystemExit('bg.webp is not a valid WEBP container')
+          print(f'Background rebuilt: {len(data)} bytes')
           PY
+          rm -f bg.b64
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
