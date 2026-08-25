@@ -28,20 +28,20 @@ jobs:
       - name: Rebuild background
         shell: bash
         run: |
-          set -euo pipefail
-          cat _bg900/part{00..15} | tr -d '\r\n ' > bg.b64
-          base64 -d bg.b64 > bg.webp
-          test -s bg.webp
           python <<'PY'
           from pathlib import Path
-          data = Path('bg.webp').read_bytes()
-          if len(data) < 20000:
-              raise SystemExit(f'bg.webp too small: {len(data)} bytes')
-          if not (data[:4] == b'RIFF' and data[8:12] == b'WEBP'):
-              raise SystemExit('bg.webp is not a valid WEBP container')
-          print(f'Background rebuilt: {len(data)} bytes')
+          import base64
+          root = Path('_bg900')
+          parts = [root / f'part{i:02d}' for i in range(16)]
+          missing = [str(p) for p in parts if not p.exists()]
+          if missing:
+              raise SystemExit('Missing background chunks: ' + ', '.join(missing))
+          text = ''.join(p.read_text(encoding='utf-8').strip() for p in parts)
+          text += '=' * ((4 - len(text) % 4) % 4)
+          raw = base64.b64decode(text, validate=False)
+          Path('bg.webp').write_bytes(raw)
+          print('Rebuilt bg.webp:', len(raw), 'bytes')
           PY
-          rm -f bg.b64
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
